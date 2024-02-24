@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, template_folder='statics/templates', static_folder='statics')
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = "<your_api_key_here>"
 
 
 def chat_with_chatgpt(prompt, model="gpt-3.5-turbo"):
