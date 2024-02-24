@@ -1,60 +1,66 @@
+# Import required libraries
 import openai
 from flask import Flask, render_template, request, jsonify
 
+# Create a Flask application
 app = Flask(__name__, template_folder='statics/templates', static_folder='statics')
+
 # Set your OpenAI API key
 openai.api_key = "<your_api_key_here>"
 
-
+# Function to interact with the ChatGPT model
 def chat_with_chatgpt(prompt, model="gpt-3.5-turbo"):
-    systemp_prompt = 'You are a helpful assistant.  Please make sure that you only return a JSON format that look like ' \
-                     'this: {"keywords": <list of keywords>}. Ensure the JSON is valid and do not write anything before' \
-                     ' or after the JSON structure provided and any new line character.'
-    response = openai.ChatCompletion.create(
-        model=model,  # Specifies the GPT model to use
+    # System prompt to guide the behavior of the model
+    system_prompt = 'You are a helpful assistant. Please make sure that you only return a JSON format that looks like ' \
+                    '{"keywords": <list of keywords>}. Ensure the JSON is valid and do not write anything before ' \
+                    'or after the JSON structure provided and any new line character.'
 
-        # Create a conversational context for the model
+    # Make a request to OpenAI's ChatCompletion API
+    response = openai.ChatCompletion.create(
+        model=model,
         messages=[
-            {"role": "system", "content": systemp_prompt},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt},
         ],
-
-        max_tokens=100,  # Specifies the maximum number of tokens (words or characters) in the generated completion
-        n=1,  # Requests only 1 completion from the model
-        stop=None,  # Specifies a stopping condition for the model. 'None' means it will hit max_token as the limit
-        temperature=0.5,  # Controls the randomness of the model's output. Lower = more focused, Higher = more random
+        max_tokens=100,
+        n=1,
+        stop=None,
+        temperature=0.5,
     )
 
-    # Picks the first and only choice in the list
-    # 'text.strip' removies leading and trailing whitespaces
+    # Extract and evaluate the model's response
     message = eval(response['choices'][0]['message']['content'])
     print(message)
     return message
 
-
+# Route for the home page
 @app.route('/')
 def index():
     return render_template('index.html')
 
-
+# Route for handling keyword generation
 @app.route('/generate_keywords', methods=['POST'])
 def generate_keywords():
     if request.method == 'POST':
-        # Use request.form.get() to avoid KeyError
+        # Use request.form.get() to safely retrieve form data
         url_link = request.form.get('inputValue')
         n_keywords = 5
+
         if url_link:
+            # Formulate a question for the model based on the input
             question = f"Write me {n_keywords} keywords given "
             input_text = question + url_link
 
-            # Call your function to get keywords
+            # Call the function to interact with the ChatGPT model and get keywords
             keywords = chat_with_chatgpt(input_text)
             print(keywords)
+            
+            # Return the generated keywords in JSON format
             return jsonify(keywords)
 
     # Handle the case where the form is not submitted correctly
     return "Invalid request"
 
-
+# Run the Flask application
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
