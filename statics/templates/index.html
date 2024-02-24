@@ -20,17 +20,26 @@
 </head>
 <body>
 
+<!-- Navbar -->
 <nav class="navbar bg-custom border-bottom border-body" data-bs-theme="dark">
     <a class="navbar-brand" href="#">
         <img src="statics/images/logo.png" alt="Keyword Generator Logo" height="40" class="mr-2"> Keyword Generator
     </a>
 </nav>
+
+<!-- Image Container -->
 <div class="image-container"></div>
+
+<!-- Main Content Container -->
 <div class="container mb-12">
     <div class="row justify-content-center mt-3">
         <div class="col-md-6">
+            <!-- Heading -->
             <h1 class="text-center mb-4">Keyword Generator</h1>
+            
+            <!-- Keyword Form -->
             <form id="keywordForm">
+                <!-- Input Type Dropdown -->
                 <div class="form-group">
                     <label for="inputType">Choose Input Type:</label>
                     <select class="form-select" id="inputType">
@@ -38,10 +47,14 @@
                         <option value="description">Description</option>
                     </select>
                 </div>
+
+                <!-- Input Field -->
                 <div class="form-group mt-2" id="inputField">
                     <label for="inputValue" id="inputLabel">Enter URL:</label>
                     <textarea id="inputValue" name="inputValue" class="form-control" rows="4" required></textarea>
                 </div>
+
+                <!-- Submit Button -->
                 <div class="text-center">
                     <button type="submit" class="btn bg-custom mt-3" data-bs-theme="dark">Generate Keywords</button>
                 </div>
@@ -49,17 +62,20 @@
         </div>
     </div>
 
+    <!-- Keyword Result Container -->
     <div class="row justify-content-center mt-4 mb-12" id="keywordResultContainer">
         <div class="col-md-6" id="keywordResult">
             <!-- Result will be displayed here -->
         </div>
     </div>
 </div>
+
 <!-- Footer -->
 <footer class="bg-secondary text-white text-center py-3 fixed-bottom">
     &copy; 2024 Keyword Generator
 </footer>
 
+<!-- Custom JavaScript -->
 <script src="statics/script.js"></script>
 </body>
 </html>
