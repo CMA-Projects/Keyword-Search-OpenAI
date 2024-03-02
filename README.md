@@ -33,3 +33,13 @@ The Keyword Generator is a web application that allows users to generate keyword
 
 3. Enter a URL in the input field and click "Generate Keywords" to see the generated keywords.
 
+# How to get an API Key
+
+openai.com -> login -> API -> API Keys -> Create a new secret key
+
+First Menu
+![image](images/img1.png)
+
+Second Menu
+![image](images/img2.png)
+
