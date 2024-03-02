@@ -9,6 +9,7 @@ The Keyword Generator is a web application that allows users to generate keyword
 - Generated keywords are displayed in a list format.
 - The application provides visual feedback to users while generating keywords.
 - Link to [presentation slides](https://docs.google.com/presentation/d/13xBS1xERTB-0lRXr5aj6THdqUAKadU6RNprzfgPKL1w/edit?usp=sharing)
+- Link to [research paper template](https://docs.google.com/document/d/1X8s9t4N2pl1fZsXUzt8MiZ1ebubeGKnA3gxWTLD-2WU/edit?usp=sharing)
 
 ## Technologies Used
 
