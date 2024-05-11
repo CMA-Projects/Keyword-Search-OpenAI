@@ -1,13 +1,14 @@
 # Import required libraries
 import openai
 from flask import Flask, render_template, request, jsonify
+from config import OPENAI_API_KEY
 
 # Initializes a Flask application. The template_folder and static_folder parameters specify the 
 # locations of HTML templates and static files (like CSS or images).
 app = Flask(__name__, template_folder='statics/templates', static_folder='statics')
 
 # Set your OpenAI API key
-openai.api_key = "<your_api_key_here>"
+openai.api_key = OPENAI_API_KEY
 
 # Function to interact with the ChatGPT model
 def chat_with_chatgpt(prompt, model="gpt-3.5-turbo"):
