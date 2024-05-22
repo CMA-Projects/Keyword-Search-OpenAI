@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/homefolder/Desktop/KeyWord Serch/Keyword-Search-OpenAI/venv/bin/python3.12" "$0" "$@"
-' '''
+#!/Users/homefolder/Desktop/keyword/Keyword-Search-OpenAI/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys
