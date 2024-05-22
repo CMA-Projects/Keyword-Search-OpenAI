@@ -8,7 +8,7 @@ from config import OPENAI_API_KEY
 app = Flask(__name__, template_folder='statics/templates', static_folder='statics')
 
 # Set your OpenAI API key
-openai.api_key = OPENAI_API_KEY
+openai.api_key = "sk-proj-cghAcPFX8C2XMWXWfllGT3BlbkFJX85pm9qgLXoh8IsWrS7m"
 
 # Function to interact with the ChatGPT model
 def chat_with_chatgpt(prompt, model="gpt-3.5-turbo"):
